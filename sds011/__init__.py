@@ -1,4 +1,4 @@
-"""This module provides an abstraction for the SDS011 air partuclate densiry sensor.
+"""This module provides an abstraction for the SDS011 air particulate density sensor.
 """
 import struct
 import serial
@@ -6,7 +6,7 @@ import serial
 #TODO: Commands against the sensor should read the reply and return success status.
 
 class SDS011(object):
-    """Provides method to read from a SDS011 air particlate density sensor
+    """Provides method to read from a SDS011 air particulate density sensor
     using UART.
     """
 
