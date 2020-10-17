@@ -11,7 +11,7 @@ Depends on `pyserial`.
 (15.6, 20.3)
 >>> sensor.sleep()  # Turn off fan and diode
 >>> sensor.sleep(sleep=False)  # Turn on fan and diode
->>> time.sleep(15)  # Allow time for the sensor to measure properly
+>>> time.sleep(30)  # Per datasheet; Allow time for the sensor to measure properly
 >>> sensor.query()
 (16.2, 21.0)
 >>> # There are other methods to configure the device, go check them out.
