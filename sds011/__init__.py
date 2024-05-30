@@ -181,10 +181,8 @@ class SDS011(object):
                 + b"\x00" * 12)
 
         cmd = self._finish_cmd(cmd)
-        print(cmd)
         self._execute(cmd)
         raw = self._get_reply()
-        print(raw)
         year = raw[2]
         month =raw[3]
         day = raw[4]
