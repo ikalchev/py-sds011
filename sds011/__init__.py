@@ -33,6 +33,8 @@ class SDS011(object):
     # The work period command ID
     WORK_PERIOD_CMD = b'\x08'
 
+    FIRMWARE_VERSION_CMD = b'\x07'
+    
     def __init__(self, serial_port, baudrate=9600, timeout=2,
                  use_query_mode=True):
         """Initialise and open serial port.
@@ -168,3 +170,21 @@ class SDS011(object):
             if d[0:1] == b"\xc0":
                 data = self._process_frame(byte + d)
                 return data
+
+    def check_firmware_version(self):
+        """
+        @return: Current firwmware version, YEAR-MONTH-DAY
+        @rtype: string
+        """
+        cmd = self.cmd_begin()
+        cmd += (self.FIRMWARE_VERSION_CMD
+                + b"\x00" * 12)
+
+        cmd = self._finish_cmd(cmd)
+        self._execute(cmd)
+        raw = self._get_reply()
+        year = raw[2]
+        month =raw[3]
+        day = raw[4]
+
+        return f"{year}-{month}-{day}"
